@@ -1,0 +1,2 @@
+# hack-program
+my program
