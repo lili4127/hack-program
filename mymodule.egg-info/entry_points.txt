@@ -1,0 +1,3 @@
+[console_scripts]
+mymodule = mymodule.__main__:main
+
