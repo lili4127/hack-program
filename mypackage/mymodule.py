@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 """
 A function for playing rock paper scissors

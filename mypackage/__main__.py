@@ -1,10 +1,9 @@
 """
 Command line interface to mymodule
 """
-
 import argparse
 import random
-from mymodule import playRPS,calculateWinner
+from mymodule import playRPS, calculateWinner
 
 
 def parse_command_line():
