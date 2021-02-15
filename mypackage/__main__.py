@@ -15,17 +15,20 @@ def parse_command_line():
     # add long args
     parser.add_argument(
         "rock",
+        type= str,
         help="plays a game with rock as the user throw",
         action="store_true")
 
     # add long args
     parser.add_argument(
         "paper",
+        type= str,
         help="plays a game with paper as the user throw",
         action="store_true")
 
     parser.add_argument(
         "scissors",
+        type= str,
         help="plays a game with scissors as the user throw",
         action="store_true")
 
@@ -33,7 +36,7 @@ def parse_command_line():
     args = parser.parse_args()
 
     # check that user only entered one action arg
-    if sum([args.next, args.last, args.info]) > 1:
+    if sum([args.rock, args.paper, args.scissors]) > 1:
         raise SystemExit(
             "only one of 'rock', 'paper' or 'scissors' at a time.")
     return args
