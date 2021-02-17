@@ -2,8 +2,9 @@
 Command line interface to mymodule
 """
 import argparse
-import random
-from mymodule import playRPS, calculateWinner
+import numpy as np
+import pandas as pd
+from mymodule import playRPS, calculateWinner, makeRecord, learnFrom, printWinner
 
 
 def parse_command_line():
@@ -48,7 +49,7 @@ def main():
     # get arguments from command line as a dict-like object
     args = parse_command_line()
 
-    # pass argument to call darwinday function
+    # pass argument to call rps function
     if args.rock:
         playRPS("rock")
     elif args.paper:
@@ -58,5 +59,6 @@ def main():
 
 
 if __name__ == "__main__":
-    possibleThrows = ["rock","paper","scissors"]
-    playRPS(random.choice(possibleThrows))
+    possibleThrows = np.array(["rock","paper","scissors"])
+    makeRecord()
+    playRPS(np.random.choice(possibleThrows))
