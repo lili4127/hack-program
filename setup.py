@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 """
 Call `pip install -e .` to install package locally for testing.
@@ -12,9 +13,11 @@ setup(
     author="Lior Tal",
     author_email="ljt2136@columbia.edu",
     license="GPLv3",
-    description="A package for playing rock paper scissors",
+    description="A package for playing rock paper scissors lizard spock",
     classifiers=["Programming Language :: Python :: 3"],
     entry_points={
-        "console_scripts": ["mymodule = mypackage.__main__:main"]
+        "console_scripts": [
+            "mymodule = mypackage.__main__:main",           
+        ]
     },
 )

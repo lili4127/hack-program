@@ -1,10 +1,11 @@
+#!/usr/bin/env python
+
 """
 Command line interface to mymodule
 """
+
 import argparse
-import numpy as np
-import pandas as pd
-from mymodule import playRPS, calculateWinner, makeRecord, learnFrom, printWinner
+from mypackage.mymodule import play_rpslz
 
 
 def parse_command_line():
@@ -15,31 +16,23 @@ def parse_command_line():
 
     # add long args
     parser.add_argument(
-        "rock",
-        type= str,
-        help="plays a game with rock as the user throw",
-        action="store_true")
+        "-t", "--trials",
+        type= int,
+        default=1,
+        help="number of replicate R/P/S/L/K games to play",
+        action="store")
 
     # add long args
     parser.add_argument(
-        "paper",
-        type= str,
-        help="plays a game with paper as the user throw",
-        action="store_true")
-
-    parser.add_argument(
-        "scissors",
-        type= str,
-        help="plays a game with scissors as the user throw",
-        action="store_true")
+        "-p", "--probs",
+        nargs=5,
+        type= float,
+        default=(1/5, 1/5, 1/5, 1/5, 1/5),
+        help="the probability the computer chooses rock, paper, scissors, lizard, or spock",
+        action="store")
 
     # parse args
     args = parser.parse_args()
-
-    # check that user only entered one action arg
-    if sum([args.rock, args.paper, args.scissors]) > 1:
-        raise SystemExit(
-            "only one of 'rock', 'paper' or 'scissors' at a time.")
     return args
 
 
@@ -48,17 +41,4 @@ def main():
 
     # get arguments from command line as a dict-like object
     args = parse_command_line()
-
-    # pass argument to call rps function
-    if args.rock:
-        playRPS("rock")
-    elif args.paper:
-        playRPS("paper")
-    elif args.scissors:
-        playRPS("scissors")
-
-
-if __name__ == "__main__":
-    possibleThrows = np.array(["rock","paper","scissors"])
-    makeRecord()
-    playRPS(np.random.choice(possibleThrows))
+    play_rpslz(args.trials, args.probs)
