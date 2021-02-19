@@ -1,3 +1,0 @@
-[console_scripts]
-mymodule = mypackage.__main__:main
-
