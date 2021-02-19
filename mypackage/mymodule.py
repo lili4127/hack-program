@@ -17,7 +17,6 @@ WINNER = np.array([
     ])
 INDEX = {"rock": 0, "paper": 1, "scissors": 2, "lizard": 3, "spock": 4,}
 
-
 def make_record(trials=100, probs=(1/5, 1/5, 1/5, 1/5, 1/5)):
     """
     Sample 100 random throws with the results weighted by the
@@ -47,7 +46,7 @@ def learn_freqs_from(record):
 
     # get frequency of professional's throws
     freqs = pd.value_counts(record) / len(record)
-    
+
     # recommendation is to return winner at frequency they chose loser
     # recommendation is organized in the order of rock, paper, scissors, lizard, spock
     # rock, paper, scissors, lizard, spock beats lizard, rock, paper, spock, scissors respectively
@@ -88,7 +87,7 @@ def play_rpslz(trials=100, probs=(1/5, 1/5, 1/5, 1/5, 1/5)):
     ties = 0
 
     # perform trials
-    for i in range(trials):
+    for _ in range(trials):
 
         # we both throw
         mine = np.random.choice(POSSIBLE_THROWS, p = recommend)
